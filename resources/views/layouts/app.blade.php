@@ -17,6 +17,11 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://js.stripe.com/v3/"></script>
+
+        @isset($css)
+            {{$css}}
+        @endisset
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -33,5 +38,9 @@
         @stack('modals')
 
         @livewireScripts
+
+        @isset($js)
+            {{$js}}
+        @endisset
     </body>
 </html>
