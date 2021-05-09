@@ -5,6 +5,11 @@
             'route' => route('home'),
             'active' => request()->routeIs('home'),
         ],
+        [
+            'name' => 'Articulos',
+            'route' => route('articles.index'),
+            'active' => request()->routeIs('articles.index'),
+        ],
     ]
 @endphp
 
