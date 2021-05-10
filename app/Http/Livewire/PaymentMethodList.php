@@ -20,4 +20,9 @@ class PaymentMethodList extends Component
         $paymentMethod = auth()->user()->findPaymentMethod($paymentMethodId);
         $paymentMethod->delete();
     }
+
+    public function defaultPaymentMethod($paymentMethodId)
+    {
+        auth()->user()->updateDefaultPaymentMethod($paymentMethodId);
+    }
 }
