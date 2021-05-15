@@ -22,5 +22,5 @@ Route::get('articles/{article}', [ArticleController::class, 'show'])->name('arti
 Route::get('billing', [BillingController::class, 'index'])->middleware('auth')->name('billing.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/');
 })->name('dashboard');
