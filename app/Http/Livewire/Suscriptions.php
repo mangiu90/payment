@@ -15,4 +15,9 @@ class Suscriptions extends Component
     {
         auth()->user()->newSubscription($name, $price)->create();
     }
+
+    public function changingPlan($name, $price)
+    {
+        auth()->user()->subscription($name)->swap($price);
+    }
 }
