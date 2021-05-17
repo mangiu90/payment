@@ -14,7 +14,7 @@
                     <li class="leading-tight"><i class="mdi mdi-check-bold text-lg"></i> Dolor sit amet</li>
                 </ul>
             </div>
-            <x-button-suscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyU31MLD6jZ"></x-button-suscription>
+            <x-button-subscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyU31MLD6jZ"></x-button-subscription>
         </div>
 
         {{-- plan trimestral --}}
@@ -30,7 +30,7 @@
                     <li class="leading-tight"><i class="mdi mdi-check-bold text-lg"></i> Elit repellat</li>
                 </ul>
             </div>
-            <x-button-suscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyUaIKo0FWI"></x-button-suscription>
+            <x-button-subscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyUaIKo0FWI"></x-button-subscription>
         </div>
 
         {{-- plan anual --}}
@@ -46,7 +46,7 @@
                     <li class="leading-tight"><i class="mdi mdi-check-bold text-lg"></i> Much more...</li>
                 </ul>
             </div>
-            <x-button-suscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyUEmX7Ypis"></x-button-suscription>
+            <x-button-subscription name="Curso pasarela de pagos" price="price_1IrVt6E4gFzdvxyUEmX7Ypis"></x-button-subscription>
         </div>
     </div>
 </div>

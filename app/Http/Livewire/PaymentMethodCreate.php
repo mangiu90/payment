@@ -24,5 +24,6 @@ class PaymentMethodCreate extends Component
         }
 
         $this->emitTo('payment-method-list', 'render');
+        $this->emitTo('subscriptions', 'render');
     }
 }

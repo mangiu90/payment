@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Suscriptions extends Component
+class Subscriptions extends Component
 {
+    protected $listeners = ['render'];
+
     public function render()
     {
-        return view('livewire.suscriptions');
+        return view('livewire.subscriptions');
     }
 
     public function newSubscription($name, $price)
