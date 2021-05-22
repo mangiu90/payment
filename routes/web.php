@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
-Route::get('articles/{article}', [ArticleController::class, 'show'])->middleware('subscription')->name('articles.show');
+Route::get('articles/{article}', [ArticleController::class, 'show'])->middleware('subscription', 'auth')->name('articles.show');
 Route::get('billing', [BillingController::class, 'index'])->middleware('auth')->name('billing.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
