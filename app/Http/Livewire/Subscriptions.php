@@ -7,19 +7,28 @@ use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class Subscriptions extends Component
 {
+    public $price;
+    public $name = 'Curso pasarela de pagos';
+
     protected $listeners = ['render'];
+
+    public function mount($price)
+    {
+        $this->price = $price;
+    }
 
     public function render()
     {
         return view('livewire.subscriptions');
     }
 
-    public function newSubscription($name, $price)
+    public function newSubscription()
     {
         try {
 
-            auth()->user()->newSubscription($name, $price)->trialDays(7)->create();
+            auth()->user()->newSubscription($this->name, $this->price)->trialDays(7)->create();
             $this->emitTo('invoices', 'render');
+            $this->emitTo('subscriptions', 'render');
 
         } catch (IncompletePayment $exception) {
 
@@ -30,20 +39,25 @@ class Subscriptions extends Component
         }
     }
 
-    public function changingPlan($name, $price)
+    public function changingPlan()
     {
-        auth()->user()->subscription($name)->swap($price);
+        auth()->user()->subscription($this->name)->swap($this->price);
 
         $this->emitTo('invoices', 'render');
+        $this->emitTo('subscriptions', 'render');
     }
 
-    public function cancelingSubscription($name)
+    public function cancelingSubscription()
     {
-        auth()->user()->subscription($name)->cancel();
+        auth()->user()->subscription($this->name)->cancel();
+
+        $this->emitTo('subscriptions', 'render');
     }
 
-    public function resumingSubscription($name)
+    public function resumingSubscription()
     {
-        auth()->user()->subscription($name)->resume();
+        auth()->user()->subscription($this->name)->resume();
+
+        $this->emitTo('subscriptions', 'render');
     }
 }
