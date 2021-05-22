@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 
 /*
@@ -33,3 +34,8 @@ Route::get('/user/invoice/{invoice}', function (Request $request, $invoiceId) {
         'product' => 'Your Product',
     ]);
 });
+
+Route::post(
+    '/stripe/webhook',
+    [WebhookController::class, 'handleWebhook']
+);
