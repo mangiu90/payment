@@ -9,6 +9,7 @@ class Subscriptions extends Component
 {
     public $price;
     public $name = 'Curso pasarela de pagos';
+    public $coupon;
 
     protected $listeners = ['render'];
 
@@ -26,7 +27,18 @@ class Subscriptions extends Component
     {
         try {
 
-            auth()->user()->newSubscription($this->name, $this->price)->trialDays(7)->create();
+            if ($this->coupon) {
+                auth()->user()->newSubscription($this->name, $this->price)
+                    ->withCoupon($this->coupon)
+                    ->trialDays(7)
+                    ->create();
+            } else {
+                auth()->user()->newSubscription($this->name, $this->price)
+                    ->withCoupon($this->coupon)
+                    ->trialDays(7)
+                    ->create();
+            }
+
             $this->emitTo('invoices', 'render');
             $this->emitTo('subscriptions', 'render');
 
