@@ -46,6 +46,13 @@
 
             alert('La compra se realizo con exito.');
         });
+
+        Livewire.on('errorPayment', function () {
+            document.getElementById('card-form').reset();
+            stripe();
+
+            alert('Hubo un error en la compra, intentalo de nuevo.');
+        });
     </script>
 
     <script>
