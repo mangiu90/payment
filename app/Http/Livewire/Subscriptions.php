@@ -16,11 +16,15 @@ class Subscriptions extends Component
     public function newSubscription($name, $price)
     {
         auth()->user()->newSubscription($name, $price)->create();
+
+        $this->emitTo('invoices', 'render');
     }
 
     public function changingPlan($name, $price)
     {
         auth()->user()->subscription($name)->swap($price);
+
+        $this->emitTo('invoices', 'render');
     }
 
     public function cancelingSubscription($name)
