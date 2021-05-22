@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-span-5">
-
+            @livewire('product-pay', ['product' => $product])
         </div>
     </div>
 </x-app-layout>
