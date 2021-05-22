@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class Subscriptions extends Component
 {
@@ -15,9 +16,18 @@ class Subscriptions extends Component
 
     public function newSubscription($name, $price)
     {
-        auth()->user()->newSubscription($name, $price)->create();
+        try {
 
-        $this->emitTo('invoices', 'render');
+            auth()->user()->newSubscription($name, $price)->create();
+            $this->emitTo('invoices', 'render');
+
+        } catch (IncompletePayment $exception) {
+
+            return redirect()->route(
+                'cashier.payment',
+                [$exception->payment->id, 'redirect' => route('billing.index')]
+            );
+        }
     }
 
     public function changingPlan($name, $price)
